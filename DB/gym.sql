@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `Gym`.`Alumn` (
   `city` VARCHAR(100) NOT NULL,
   `id_gym` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `gym_alumn_fk_idx` (`id_gym` ASC) VISIBLE,
+  INDEX `gym_alumn_fk_idx` (`id_gym` ASC),
   CONSTRAINT `gym_alumn_fk`
     FOREIGN KEY (`id_gym`)
     REFERENCES `Gym`.`Gym` (`id`)
@@ -111,8 +111,8 @@ CREATE TABLE IF NOT EXISTS `Gym`.`Alumn_has_Firness_trainer` (
   `Alumn_id` INT NOT NULL,
   `Firness_trainer_id` INT NOT NULL,
   PRIMARY KEY (`Alumn_id`, `Firness_trainer_id`),
-  INDEX `fk_Alumn_has_Firness_trainer_Firness_trainer1_idx` (`Firness_trainer_id` ASC) VISIBLE,
-  INDEX `fk_Alumn_has_Firness_trainer_Alumn1_idx` (`Alumn_id` ASC) VISIBLE,
+  INDEX `fk_Alumn_has_Firness_trainer_Firness_trainer1_idx` (`Firness_trainer_id` ASC),
+  INDEX `fk_Alumn_has_Firness_trainer_Alumn1_idx` (`Alumn_id` ASC) ,
   CONSTRAINT `fk_Alumn_has_Firness_trainer_Alumn1`
     FOREIGN KEY (`Alumn_id`)
     REFERENCES `Gym`.`Alumn` (`id`)
@@ -133,8 +133,8 @@ CREATE TABLE IF NOT EXISTS `Gym`.`Alumn_has_Class` (
   `Alumn_id` INT NOT NULL,
   `Class_id` INT NOT NULL,
   PRIMARY KEY (`Alumn_id`, `Class_id`),
-  INDEX `fk_Alumn_has_Class_Class1_idx` (`Class_id` ASC) VISIBLE,
-  INDEX `fk_Alumn_has_Class_Alumn1_idx` (`Alumn_id` ASC) VISIBLE,
+  INDEX `fk_Alumn_has_Class_Class1_idx` (`Class_id` ASC) ,
+  INDEX `fk_Alumn_has_Class_Alumn1_idx` (`Alumn_id` ASC),
   CONSTRAINT `fk_Alumn_has_Class_Alumn1`
     FOREIGN KEY (`Alumn_id`)
     REFERENCES `Gym`.`Alumn` (`id`)
