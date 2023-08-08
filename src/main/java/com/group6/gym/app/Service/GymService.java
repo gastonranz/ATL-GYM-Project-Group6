@@ -1,6 +1,6 @@
 package com.group6.gym.app.Service;
 
-import com.group6.gym.app.Entities.Gym;
+import com.group6.gym.app.entities.Gym;
 
 import java.util.List;
 

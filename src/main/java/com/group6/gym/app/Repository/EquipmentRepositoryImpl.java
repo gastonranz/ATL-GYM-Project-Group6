@@ -1,21 +1,20 @@
 package com.group6.gym.app.Repository;
 
-import com.group6.gym.app.Entities.Equipment;
+import com.group6.gym.app.entities.Equipment;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 @Repository
-
-public class EquipmentRepositoryImp implements EquipmentRepository {
-
+public class EquipmentRepositoryImpl implements EquipmentRepository {
 
     @PersistenceContext
     private EntityManager em;
 
     public List<Equipment> getAll() {
-        return em.createQuery("select m from Equipment m ;", Equipment.class).getResultList();
+        return em.createQuery("FROM Equipment", Equipment.class).getResultList();
 
     }
 

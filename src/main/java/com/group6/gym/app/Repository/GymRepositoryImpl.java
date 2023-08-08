@@ -1,6 +1,6 @@
 package com.group6.gym.app.Repository;
 
-import com.group6.gym.app.Entities.Gym;
+import com.group6.gym.app.entities.Gym;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
@@ -8,19 +8,19 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class GymRepositoryImp implements GymRepository {
+public class GymRepositoryImpl implements GymRepository {
 
     @PersistenceContext
     private EntityManager em;
 
     @Override
     public List<Gym> getAll() {
-        return em.createQuery("Select m from Gym  m;",Gym.class).getResultList();
+        return em.createQuery("FROM Gym", Gym.class).getResultList();
     }
 
     @Override
     public Gym findById(Long id) {
-        return em.find(Gym.class,id);
+        return em.find(Gym.class, id);
     }
 
     @Override

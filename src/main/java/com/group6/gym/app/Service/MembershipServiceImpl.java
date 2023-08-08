@@ -1,6 +1,6 @@
 package com.group6.gym.app.Service;
 
-import com.group6.gym.app.Entities.Membership;
+import com.group6.gym.app.entities.Membership;
 import com.group6.gym.app.Repository.MembershipRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class MembershipServiceImpl implements MembershipService{
+public class MembershipServiceImpl implements MembershipService {
     @Autowired
     private MembershipRepository membershipRepository;
 
@@ -26,7 +26,7 @@ public class MembershipServiceImpl implements MembershipService{
 
     @Override
     public void guardar(Membership membership) {
-      membershipRepository.guardar(membership);
+        membershipRepository.guardar(membership);
     }
 
     @Override
