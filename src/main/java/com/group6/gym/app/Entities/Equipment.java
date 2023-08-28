@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -22,16 +23,17 @@ public class Equipment {
     private Long  id;
     @Column (name="product_name")
     private String productName;
-    @Column (name="description")
+    @Column (name="description", length = 60)
     private String description;
     @Column (name="status")
     private Boolean status;
     @Column (name ="buy_time")
+    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private LocalDateTime buyTime;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_gym")
+    @JoinColumn(name = "gym_id")
     private Gym gym;
 
     @Override

@@ -18,37 +18,31 @@ import java.util.List;
 public class Gym {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column (name="id_gym")
+    @Column (name="gym_id")
     private Long  id;
-    @Column(name="name")
+    @Column(name="name", length = 40, nullable = false)
     private String name;
-    @Column (name="phone_number")
+    @Column (name="phone_number", length = 20, nullable = false)
     private String phone_number;
-    @Column (name="email")
+    @Column (name="email", length = 50, nullable = false, unique = true)
     private String email;
-    @Column (name="address")
+    @Column (name="address", length = 50, nullable = false)
     private String address;
-    @Column (name="cp")
+    @Column (name="cp", length = 8, nullable = false)
     private int cp;
-    @Column (name="City")
+    @Column (name="City", length = 25, nullable = false)
     private String City;
-    @Column (name="Web")
+    @Column (name="Web", length = 50)
     private String Web;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "gym")
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "gym")
     private List<User> usuarios;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,mappedBy = "gym")
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "gym")
     private List<Equipment> equipments;
 
-    @OneToOne
-    @JoinColumn(name = "membership_id")
-    private Membership membership;
-
-
-    @OneToOne
-    @JoinColumn(name = "employee_id")
-    private Employee employee;
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE} , mappedBy = "gym")
+    private List<Employee> employee;
 
     @Override
     public String toString() {

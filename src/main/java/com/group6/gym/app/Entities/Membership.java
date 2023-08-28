@@ -19,8 +19,10 @@ public class Membership {
     @Column (name = "membership_id")
     private Long id;
 
+    @Column(name = "nombre", length = 50, nullable = false)
     private String nombre;
 
+    @Column(name = "tipo_membership", length = 20, nullable = false)
     private String tipoMembership;
 
     @JsonIgnore
@@ -28,12 +30,7 @@ public class Membership {
     private User usuario;
 
     @JsonIgnore
-    @OneToOne(cascade =  CascadeType.ALL, orphanRemoval = true, mappedBy = "membership")
-    private Gym gym;
-
-    @JsonIgnore
-    @OneToOne
-    @JoinColumn(name = "employee_id")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "membership")
     private Employee employee;
 
     @Override
