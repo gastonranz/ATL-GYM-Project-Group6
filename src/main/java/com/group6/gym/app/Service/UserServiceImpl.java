@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -20,19 +21,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByID(Long id) {
-        return userService.findByID(id);
+    public Optional<User> findById(Long id) {
+        return userService.findById(id);
     }
 
     @Override
-    public void guardar(User user) {
-        userService.guardar(user);
-
+    public User guardar(User user) {
+        return userService.guardar(user);
     }
 
     @Override
-    public void actualizar(User user) {
-        userService.actualizar(user);
+    public User actualizar(User user) {
+        return userService.actualizar(user);
 
     }
 

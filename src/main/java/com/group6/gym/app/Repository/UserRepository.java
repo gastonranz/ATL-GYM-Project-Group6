@@ -3,16 +3,17 @@ package com.group6.gym.app.Repository;
 import com.group6.gym.app.entities.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserRepository {
 
     List<User> getAll();
 
-    User findByID(Long id);
+    Optional<User> findById(Long id);
 
-    void guardar(User user);
+    User guardar(User user);
 
-    void actualizar(User user);
+    User actualizar(User user);
 
     void eliminar(Long id);
 

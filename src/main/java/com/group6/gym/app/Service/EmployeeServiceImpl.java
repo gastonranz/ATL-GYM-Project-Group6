@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -18,21 +19,31 @@ public class EmployeeServiceImpl implements EmployeeService {
         return (List<Employee>) employeeRepository.findAll();
     }
 
-    public Employee findById(Long id) {
-        return employeeRepository.findById(id).get();
+    @Override
+    public List<Employee> getEmployeeListWithGymAndWithMembership() {
+        return employeeRepository.getEmployeeListWithGymAndWithMembership();
     }
 
-    public void guardar(Employee employee) {
-        employeeRepository.save(employee);
+    @Override
+    public Optional<Employee> getEmployeeWithGymAndWithMembership(Long id) {
+        return employeeRepository.findById(id);
     }
 
-    public void actualizar(Employee employee) {
-        employeeRepository.save(employee);
+    public Optional<Employee> findById(Long id) {
+        return employeeRepository.findById(id);
+    }
+
+    public Employee guardar(Employee employee) {
+        return employeeRepository.save(employee);
+    }
+
+    public Employee actualizar(Employee employee) {
+        return employeeRepository.save(employee);
 
     }
 
     public void eliminar(Long id) {
-        employeeRepository.delete(findById(id));
+        employeeRepository.delete(findById(id).orElseThrow(RuntimeException::new));
     }
 
 

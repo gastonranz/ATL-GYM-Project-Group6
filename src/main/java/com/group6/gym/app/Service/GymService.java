@@ -3,15 +3,16 @@ package com.group6.gym.app.Service;
 import com.group6.gym.app.entities.Gym;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface GymService {
     List<Gym> getAll();
 
-    Gym findById(Long id);
+    Optional<Gym> findById(Long id);
 
-    void guardar(Gym obj);
+    Gym guardar(Gym obj);
 
-    void actualizar(Gym obj);
+    Gym actualizar(Gym obj);
 
     void eliminar(Long id);
 }
