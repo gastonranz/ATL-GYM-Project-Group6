@@ -1,18 +1,24 @@
 package com.group6.gym.app.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name= "employee")
-public class Employee {
+@Table(name= "employees")
+public class Employee implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "employee_id")
@@ -25,13 +31,13 @@ public class Employee {
     private String email;
     @Column (name = "phone_number", length = 20, nullable = false)
     private String phoneNumber;
-    @JsonIgnore
+    @JsonIgnoreProperties({"usuarios", "equipments", "employees"})
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "gym_id")
+    @JoinColumn(name = "gym_id", nullable = false)
     private Gym gym;
-    @JsonIgnore
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "membership_id")
+
+    @ManyToOne
+    @JoinColumn(name = "membership_id", nullable = false)
     private Membership membership;
 
     @Override

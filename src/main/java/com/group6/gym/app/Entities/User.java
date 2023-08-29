@@ -1,6 +1,7 @@
 package com.group6.gym.app.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -8,14 +9,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name= "user")
-public class User {
+@Table(name= "users")
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
@@ -36,18 +39,17 @@ public class User {
     @Column(name = "address", length = 50, nullable = false)
     private String address;
     @Column(name = "cp", length = 10, nullable = false)
-    private int cp;
-    @Column(name = "City", length = 50, nullable = false)
+    private String cp;
+    @Column(name = "city", length = 50, nullable = false)
     private String City;
 
-    @JsonIgnore
+    @JsonIgnoreProperties({"usuarios", "equipments", "employees"})
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "gym_id")
+    @JoinColumn(name = "gym_id", nullable = false)
     private Gym gym;
 
-    @JsonIgnore
-    @OneToOne
-    @JoinColumn(name = "membership_id")
+    @ManyToOne
+    @JoinColumn(name = "membership_id", nullable = false)
     private Membership membership;
 
     @Override
@@ -56,12 +58,13 @@ public class User {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", phoneNumber=" + phoneNumber +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 ", bornDate=" + bornDate +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
                 ", cp=" + cp +
                 ", City='" + City + '\'' +
+                ", membership=" + membership +
                 '}';
     }
 }
