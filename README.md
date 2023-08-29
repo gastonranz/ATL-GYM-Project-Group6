@@ -34,7 +34,7 @@ MYSQL_PASSWORD=Your_Password
 mvn spring-boot:run
 ```
 
-The app will start running at [http://localhost:8080](http://localhost:8080/)
+The app will start running at[http://localhost:8080](http://localhost:8080/)
 
 ### Endpoints
 
@@ -95,19 +95,19 @@ The app will start running at [http://localhost:8080](http://localhost:8080/)
 
 ```json
 {
-    "name": "newGym",
-
-    "phone_number": "8787382",
-
-    "email": "newGym@gmail.com",
-
-    "address": "Street 74",
-
-    "cp": "123",
-
-    "city": "Buenos aires",
-
-    "web": "www.newGym.com"
+    "name": "newGym",
+    
+    "phone_number": "8787382",
+    
+    "email": "newGym@gmail.com",
+    
+    "address": "Street74",
+    
+    "cp": "123",
+    
+    "city": "Buenosaires",
+    
+    "web": "www.newGym.com"
 }
 ```
 
@@ -115,226 +115,137 @@ The app will start running at [http://localhost:8080](http://localhost:8080/)
 
 ```json
 {
-
-	"name": "updateGym",
-
-	"phone_number": "8787382",
-
-	"email": "updateGym@gmail.com",
-
-	"address": "Street 74",
-
-	"cp": "123",
-
-	"city": "Buenos aires",
-
-	"web": "www.updateGym.com"
-
+	"name": "updateGym",
+	"phone_number": "8787382",
+	"email": "updateGym@gmail.com",
+	"address": "Street 74",
+	"cp": "123",
+	"city": "Buenos aires",
+	"web": "www.updateGym.com"
 }
 ```
 
 ##### Create user -> /api/v1/user
 
 ```json
-    {
-
-        "name": "New",
-
-        "lastName": "User",
-
-        "phoneNumber": "8094345493",
-
-        "bornDate": "2020-05-02T08:05:00",
-
-        "email": "newUser32@mail.com",
-
-        "address": "Calle santiago",
-
-        "cp": "3212",
-
-        "city": "Buenos aires",
-
-         "gym": {
-
-        "id": 1
-
-        },
-    
-        "membership": {
-
-            "id": 2
-
-        }
-
-    }
+  {
+    "name": "New",
+    "lastName": "User",
+    "phoneNumber": "8094345493",
+    "bornDate": "2020-05-02T08:05:00",
+    "email": "newUser32@mail.com",
+    "address": "Callesantiago",
+    "cp": "3212",
+    "city": "Buenos aires",
+    "gym": {
+      "id": 1
+    },
+    "membership": {
+      "id": 2
+    }
+}
 ```
 
 ##### Update user -> /api/v1/user/{id}
 
-``` json
-    {
-
-        "name": "Update",
-
-        "lastName": "User",
-
-        "phoneNumber": "8094345493",
-
-        "bornDate": "2020-05-02T08:05:00",
-
-        "email": "updateUser32@mail.com",
-
-        "address": "Calle santiago",
-
-        "cp": "3212",
-
-        "city": "Buenos aires",
-        
-        "gym": {
-
-	        "id": 1
-
-	    },
-	    
-        "membership": {
-
-            "id": 2
-
-        }
-
-    }
+```json
+{
+    "name": "Update",
+    "lastName": "User",
+    "phoneNumber": "8094345493",
+    "bornDate": "2020-05-02T08:05:00",
+    "email": "updateUser32@mail.com",
+    "address": "Calle santiago",
+    "cp": "3212",
+    "city":"Buenosaires",
+    "gym":{
+        "id":1
+        },
+    "membership":{
+    "id":2
+    }
+}
 ```
 
 ##### Create employee -> /api/v1/employee
 
-``` json
+```json
 {
-
-    "name": "New",
-
-    "lastName": "Employee",
-
-    "email": "newEmployee@gmail.com",
-
-    "phoneNumber": "8756784632",
-
-    "gym": {
-
-        "id": 1
-
-    },
-
-    "membership": {
-
-        "id": 1
-
-    }
-
+    "name":"New",
+    "lastName":"Employee",
+    "email":"newEmployee@gmail.com",
+    "phoneNumber":"8756784632",
+    "gym":{
+    "id":1
+    },
+    "membership":{
+    "id":1
+    }
 }
 ```
 
 ##### Update employee -> /api/v1/employee/{id}
 
-``` json
+```json
 {
-
-    "name": "Update",
-
-    "lastName": "Employee",
-
-    "email": "updateEmployee@gmail.com",
-
-    "phoneNumber": "8756784632",
-
-    "gym": {
-
-        "id": 2
-
-    },
-
-    "membership": {
-
-        "id": 2
-
-    }
-
+    "name":"Update",
+    "lastName":"Employee",
+    "email":"updateEmployee@gmail.com",
+    "phoneNumber":"8756784632",
+    "gym":{
+    "id":2
+    },
+    "membership":{
+    "id":2
+    }
 }
 ```
 
 
 ##### Create equipment -> /api/v1/equipment
 
-``` json
-    {
-
-        "productName": "New Pesas",
-
-        "description": "Pesas 65KG",
-
-        "status": true,
-
-        "buyTime": "2023-08-29T09:13:15",
-
-        "gym": {
-
-            "id": 1
-
-        }
-
-    }
+```json
+{
+    "productName":"NewPesas",
+    "description":"Pesas65KG",
+    "status":true,
+    "buyTime":"2023-08-29T09:13:15",
+    "gym":{
+    "id":1
+    }
+}
 ```
 
 ##### Update equipment -> /api/v1/equipment/{id}
 
-``` json
-    {
-
-        "productName": "Update Pesas",
-
-        "description": "Pesas 65KG",
-
-        "status": false,
-
-        "buyTime": "2023-08-29T09:13:15",
-
-        "gym": {
-
-            "id": 1
-
-        }
-
-    }
+```json
+{
+    "productName":"UpdatePesas",
+    "description":"Pesas65KG",
+    "status":false,
+    "buyTime":"2023-08-29T09:13:15",
+    "gym":{
+    "id":1
+    }
+}
 ```
 
 
 ##### Create membership -> /api/v1/membership
 
-``` json
+```json
 {
-  "nombre": "ProMax",
-  "tipoMembership": "ProMax"
+    "nombre":"ProMax",
+    "tipoMembership":"PRO_MAX"
 }
 ```
 
 
 ##### Update membership -> /api/v1/membership/{id}
 
-``` json
-    {
-
-        "productName": "Update Pesas",
-
-        "description": "Pesas 65KG",
-
-        "status": false,
-
-        "buyTime": "2023-08-29T09:13:15",
-
-        "gym": {
-
-            "id": 1
-
-        }
-
-    }
+```json
+{
+  "nombre":"ProMaxplus",
+  "tipoMembership":"PRO_MAX_PLUS"
+}
 ```
