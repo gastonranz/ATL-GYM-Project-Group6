@@ -34,7 +34,7 @@ MYSQL_PASSWORD=Your_Password
 mvn spring-boot:run
 ```
 
-The app will start running at[http://localhost:8080](http://localhost:8080/)
+The app will start running at [http://localhost:8080](http://localhost:8080/)
 
 ---
 
@@ -83,12 +83,12 @@ The app will start running at[http://localhost:8080](http://localhost:8080/)
 **Membership**
 
 | Method | URL                     | Description                                         | Valid Request Body |
-| ------ | ----------------------- | --------------------------------------------------- | ------------------ |
-| GET    | /api/v1/membership      | Retrieved all membership information                |                    |
-| GET    | /api/v1/membership/{id} | Retrieved all information of an specific membership |                    |
-| POST   | /api/v1/membership      | Add a membership                                    | `JSON`             |
-| PUT    | /api/v1/membership/{id} | Update a membership                                 | `JSON`             |
-| DELETE | /api/v1/membership/{id} | Delete a membership                                 | `JSON`             |
+| ------ | ----------------------- | --------------------------------------------------- | ------------ |
+| GET    | /api/v1/membership      | Retrieved all membership information                |              |
+| GET    | /api/v1/membership/{id} | Retrieved all information of an specific membership |              |
+| POST   | /api/v1/membership      | Add a membership                                    | `JSON`       |
+| PUT    | /api/v1/membership/{id} | Update a membership                                 | `JSON`       |
+| DELETE | /api/v1/membership/{id} | Delete a membership                                 |              |
 
 ## Sample Valid JSON Request Bodys
 
@@ -98,17 +98,11 @@ The app will start running at[http://localhost:8080](http://localhost:8080/)
 ```json
 {
     "name": "newGym",
-    
     "phone_number": "8787382",
-    
     "email": "newGym@gmail.com",
-    
     "address": "Street74",
-    
     "cp": "123",
-    
     "city": "Buenosaires",
-    
     "web": "www.newGym.com"
 }
 ```
