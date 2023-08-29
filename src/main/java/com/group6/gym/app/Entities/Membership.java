@@ -8,33 +8,33 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name= "membership")
-public class Membership {
+@Table(name = "memberships")
+public class Membership implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column (name = "membership_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "membership_id")
     private Long id;
 
+    @Column(name = "nombre", length = 50, nullable = false, unique = true)
     private String nombre;
 
+    @Column(name = "tipo_membership", length = 20, nullable = false, unique = true)
     private String tipoMembership;
 
     @JsonIgnore
-    @OneToOne(cascade =  CascadeType.ALL, orphanRemoval = true, mappedBy = "membership")
-    private User usuario;
-
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "membership")
+    private List<User> usuarios;
     @JsonIgnore
-    @OneToOne(cascade =  CascadeType.ALL, orphanRemoval = true, mappedBy = "membership")
-    private Gym gym;
-
-    @JsonIgnore
-    @OneToOne
-    @JoinColumn(name = "employee_id")
-    private Employee employee;
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "membership")
+    private List<Employee> employees;
 
     @Override
     public String toString() {

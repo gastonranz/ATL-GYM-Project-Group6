@@ -6,6 +6,7 @@ import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class MembershipRepositoryImpl implements MembershipRepository {
@@ -19,22 +20,24 @@ public class MembershipRepositoryImpl implements MembershipRepository {
     }
 
     @Override
-    public Membership findById(Long id) {
-        return em.find(Membership.class, id);
+    public Optional<Membership> findById(Long id) {
+        return Optional.ofNullable(em.find(Membership.class, id));
     }
 
     @Override
-    public void guardar(Membership membership) {
+    public Membership guardar(Membership membership) {
         em.persist(membership);
+        return membership;
     }
 
     @Override
-    public void actualizar(Membership membership) {
+    public Membership actualizar(Membership membership) {
         em.merge(membership);
+        return membership;
     }
 
     @Override
     public void eliminar(Long id) {
-        em.remove(findById(id));
+        em.remove(findById(id).orElseThrow(RuntimeException::new));
     }
 }

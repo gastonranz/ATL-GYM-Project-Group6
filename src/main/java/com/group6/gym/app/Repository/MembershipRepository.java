@@ -3,15 +3,16 @@ package com.group6.gym.app.Repository;
 import com.group6.gym.app.entities.Membership;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface MembershipRepository {
     List<Membership> getAll();
 
-    Membership findById(Long id);
+    Optional<Membership> findById(Long id);
 
-    void guardar(Membership membership);
+    Membership guardar(Membership membership);
 
-    void actualizar(Membership membership);
+    Membership actualizar(Membership membership);
 
     void eliminar(Long id);
 

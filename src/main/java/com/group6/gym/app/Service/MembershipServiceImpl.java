@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -20,19 +21,18 @@ public class MembershipServiceImpl implements MembershipService {
     }
 
     @Override
-    public Membership findById(Long id) {
+    public Optional<Membership> findById(Long id) {
         return membershipRepository.findById(id);
     }
 
     @Override
-    public void guardar(Membership membership) {
-        membershipRepository.guardar(membership);
+    public Membership guardar(Membership membership) {
+        return membershipRepository.guardar(membership);
     }
 
     @Override
-    public void actualizar(Membership membership) {
-        membershipRepository.actualizar(membership);
-
+    public Membership actualizar(Membership membership) {
+       return membershipRepository.actualizar(membership);
     }
 
     @Override

@@ -3,10 +3,13 @@ package com.group6.gym.app.Service;
 import com.group6.gym.app.Repository.EquipmentRepository;
 import com.group6.gym.app.entities.Equipment;
 import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -20,18 +23,18 @@ public class EquipmentServiceImpl implements EquipmentService {
     }
 
     @Override
-    public Equipment findById(Long id) {
+    public Optional<Equipment> findById(Long id) {
         return equipmentRepository.findById(id);
     }
 
     @Override
-    public void guardar(Equipment equipment) {
-        equipmentRepository.guardar(equipment);
+    public Equipment guardar(Equipment equipment) {
+        return equipmentRepository.guardar(equipment);
     }
 
     @Override
-    public void actualizar(Equipment equipment) {
-        equipmentRepository.actualizar(equipment);
+    public Equipment actualizar(Equipment equipment) {
+        return equipmentRepository.actualizar(equipment);
     }
 
     @Override

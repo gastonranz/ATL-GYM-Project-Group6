@@ -3,15 +3,16 @@ package com.group6.gym.app.Repository;
 import com.group6.gym.app.entities.Equipment;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface EquipmentRepository {
     List<Equipment> getAll();
 
-    Equipment findById(Long id);
+    Optional<Equipment> findById(Long id);
 
-    void guardar(Equipment equipment);
+    Equipment guardar(Equipment equipment);
 
-    void actualizar(Equipment equipment);
+    Equipment actualizar(Equipment equipment);
 
     void eliminar(Long id);
 

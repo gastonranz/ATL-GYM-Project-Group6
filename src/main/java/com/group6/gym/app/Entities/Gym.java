@@ -1,54 +1,48 @@
 package com.group6.gym.app.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name= "gym")
-public class Gym {
+@Table(name= "gyms")
+public class Gym implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column (name="id_gym")
+    @Column (name="gym_id")
     private Long  id;
-    @Column(name="name")
+    @Column(name="name", length = 40, nullable = false)
     private String name;
-    @Column (name="phone_number")
+    @Column (name="phone_number", length = 20, nullable = false)
     private String phone_number;
-    @Column (name="email")
+    @Column (name="email", length = 50, nullable = false, unique = true)
     private String email;
-    @Column (name="address")
+    @Column (name="address", length = 50, nullable = false)
     private String address;
-    @Column (name="cp")
-    private int cp;
-    @Column (name="City")
+    @Column (name="cp", length = 8, nullable = false)
+    private String cp;
+    @Column (name="City", length = 25, nullable = false)
     private String City;
-    @Column (name="Web")
+    @Column (name="Web", length = 50)
     private String Web;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "gym")
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE} , mappedBy = "gym")
     private List<User> usuarios;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,mappedBy = "gym")
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "gym")
     private List<Equipment> equipments;
 
-    @OneToOne
-    @JoinColumn(name = "membership_id")
-    private Membership membership;
-
-
-    @OneToOne
-    @JoinColumn(name = "employee_id")
-    private Employee employee;
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE} , mappedBy = "gym")
+    private List<Employee> employees;
 
     @Override
     public String toString() {

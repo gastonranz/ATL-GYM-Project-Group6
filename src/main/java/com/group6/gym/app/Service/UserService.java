@@ -3,15 +3,16 @@ package com.group6.gym.app.Service;
 import com.group6.gym.app.entities.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
     List<User> getAll();
 
-    User findByID(Long id);
+    Optional<User> findById(Long id);
 
-    void guardar(User user);
+    User guardar(User user);
 
-    void actualizar(User user);
+    User actualizar(User user);
 
     void eliminar(Long id);
 }
