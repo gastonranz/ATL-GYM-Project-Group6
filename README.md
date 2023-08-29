@@ -20,7 +20,7 @@ CREATE DATABASE gym;
 
 - **3. Configure the database on the project.**
 
-Create a file `.env` on the route `src/main/resources` and add the following lines:
+Create a `.env` file in the follow path `src/main/resources` and add the following lines:
 
 ```yaml
 MYSQL_URL=jdbc:mysql://localhost:3306/gym  
